@@ -144,6 +144,10 @@ AKGO_USE_WINDOW_FOR_AUDIO_AFTER_VIDEO=true
 -- no guarantee it will always be that way. Better safe than sorry.
 if (mp.get_property("config") ~= "no") then
     local originalKeepOpenValue = mp.get_property("keep-open")
+    
+    if (mp.get_property("vo") == "image") then
+        return
+    end
 
     -- This runs with "false" at mpv initialization (before the playback
     -- of the first file), regardless of whether that file will use
